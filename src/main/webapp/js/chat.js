@@ -8,7 +8,8 @@ var webSocket;
 
 function wsConnect()
 {
-	webSocket = new WebSocket("ws://192.168.0.101:8080/chatserver/websocketendpoint/" + client.value);
+	var host = 	location.hostname;//"192.168.0.101";
+	webSocket = new WebSocket("ws://" + host + ":8080/chatserver/websocketendpoint/" + client.value);
 	//event handlers
 	webSocket.onopen = function(message){ wsOpen(message);};
 	webSocket.onmessage = function(message){ wsGetMessage(message);};
