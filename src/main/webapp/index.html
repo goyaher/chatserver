@@ -1,0 +1,25 @@
+<html>
+<header>
+	<h1>Chat Application (Don't press "ENTER", instead click buttons)</h1>
+</header>
+
+<body>
+<form>
+	Your Name: <input id="client" type="text"> 
+	<input onclick="wsConnect();" value="Connect" type="button">
+	<input onclick="wsCloseConnection();" value="Disconnect" type="button">
+</form>
+<textarea id="echoText" rows="20" cols="100"></textarea>
+
+<form>
+    Message To: 
+    <select id="users"></select>
+    <input id="message" type="text">
+	<input onclick="wsSendMessage();" value="Send" type="button">
+</form>
+
+<script type="text/javascript" src="js/chat.js"></script>
+
+
+</body>
+</html>
