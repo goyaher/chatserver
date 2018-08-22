@@ -8,7 +8,7 @@ var webSocket;
 
 function wsConnect()
 {
-	webSocket = new WebSocket("ws://192.168.0.103:8080/chat/websocketendpoint/" + client.value);
+	webSocket = new WebSocket("ws://192.168.0.101:8080/chatserver/websocketendpoint/" + client.value);
 	//event handlers
 	webSocket.onopen = function(message){ wsOpen(message);};
 	webSocket.onmessage = function(message){ wsGetMessage(message);};
@@ -34,7 +34,9 @@ function wsCloseConnection()
 }
 function wsGetMessage(message)
 {	
-	if (message.data.startsWith("SERVER") && message.data.includes("ONLINE") && !message.data.includes("No-user is ONLINE"))
+	if (message.data.indexOf("SERVER") != -1 && 
+			message.data.indexOf("ONLINE") != -1 && 
+				message.data.indexOf("No-user is ONLINE") == -1)
 	{
 		//if online message, then add user to the users select.
 		var lastIndex = message.data.indexOf(" ");
